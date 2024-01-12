@@ -21,7 +21,7 @@ test: $(TEST_BIN)
 	done;
 
 obj/%.o: src/%.c
-	gcc $(CFLAGS) -c $^ -o $@
+	gcc $(CFLAGS) -Iinclude -c $^ -o $@ -fvisibility=hidden
 
 bin/%.test: test/%.c bin/lib$(LIB_NAME).so.$(VERSION_MAJOR).$(VERSION_MINOR)
 	gcc $(CFLAGS) -Iinclude $< -o $@ -Lbin -l$(LIB_NAME)
